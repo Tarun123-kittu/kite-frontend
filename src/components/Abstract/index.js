@@ -227,6 +227,9 @@ const handleGanderchange=(data) =>{
                                                 }
                                             }
                                         },
+                                        credits: {
+                                            enabled: false
+                                          },
 
                                         tooltip: {
                                             headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
@@ -238,9 +241,7 @@ const handleGanderchange=(data) =>{
                                                 colorByPoint: true,
                                                 data: (use_as_per_age?.YouTube) ? JSON.parse(use_as_per_age?.YouTube).map((i)=>({...i, name: i.agerange.description, y:parseFloat(i.percentage)})):{}
                                             }
-                                        ],
-
-
+                                        ]
                                     }} />
                                 </div>
                             </div>
@@ -278,6 +279,9 @@ const handleGanderchange=(data) =>{
                                                 enableMouseTracking: false
                                             }
                                         },
+                                        credits: {
+                                            enabled: false
+                                          },
 
                                         series: [{
                                             name: '',
@@ -347,6 +351,9 @@ const handleGanderchange=(data) =>{
                                             headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
                                             pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
                                         },
+                                        credits: {
+                                            enabled: false
+                                          },
                                         series: [
                                             {
                                                 name: "Browsers",
@@ -393,6 +400,9 @@ const handleGanderchange=(data) =>{
                                                 enableMouseTracking: false
                                             }
                                         },
+                                        credits: {
+                                            enabled: false
+                                          },
 
                                         series: [{
                                             name: '',
@@ -462,6 +472,9 @@ const handleGanderchange=(data) =>{
                                             headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
                                             pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
                                         },
+                                        credits: {
+                                            enabled: false
+                                          },
                                         series: [
                                             {
                                                 name: "Browsers",
@@ -513,6 +526,9 @@ const handleGanderchange=(data) =>{
                                             name: '',
                                             data: (population_projection_by_age?.AppsKidscorp) ? JSON.parse(population_projection_by_age?.AppsKidscorp).map((i)=>{return parseInt(i.connectedpop)}):[]
                                         }],
+                                        credits: {
+                                            enabled: false
+                                          },
 
                                         responsive: {
                                             rules: [{
