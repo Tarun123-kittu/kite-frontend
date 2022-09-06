@@ -14,6 +14,8 @@ const Calculater = () => {
     const [country, setCountry] = useState("pe");
     const [product, setProduct] = useState("1");
     const [budget, setBudget] = useState("");
+    const [gender, setGender] = useState("");
+    const [ageRange, setAgeRange] = useState("");
     const [connectedPopulation, setConnectedPopulation] = useState("");
     const [projectedPopulation, setProjectedPopulation] = useState("");
     const [percentage, setPercentage] = useState("");
@@ -24,7 +26,9 @@ const Calculater = () => {
         reportSelector
     );
 
-
+    function refreshPage() {
+        window.location.reload(false);
+      }
     useEffect(() => {
         dispatch(index({}));
         fetchData();
@@ -40,15 +44,27 @@ const Calculater = () => {
         setCountry(data);
      }
      const handleProduct=(data)=>{
-        searchquery = `country=${country}&product=${data}&budget=${budget}`;
+        searchquery = `country=${country}&product=${data}&budget=${budget}&ageRange=${ageRange}&gender=${gender}`;
         fetchData();
         setProduct(data);
      }
 
      const handlebudget= async(e)=>{
         e.preventDefault();
-        searchquery = `country=${country}&product=${product}&budget=${budget}`;
+        searchquery = `country=${country}&product=${product}&budget=${budget}&ageRange=${ageRange}&gender=${gender}`;
         fetchData();
+     }
+
+     const handleAgeRange = (data) => {
+        searchquery = `country=${country}&product=${product}&budget=${budget}&ageRange=${data}&gender=${gender}`;
+        fetchData();
+        setAgeRange(data);
+     }
+
+     const handleGender = (data) => {
+        searchquery = `country=${country}&product=${product}&budget=${budget}&ageRange=${ageRange}&gender=${data}`;
+        fetchData();
+        setGender(data);
      }
 
     let fetchData = async (e) => {
@@ -105,6 +121,9 @@ const Calculater = () => {
 
             }
         },
+        credits: {
+            enabled: false
+          },
         series: [{
             type: 'pie',
             name: 'To achieve',
@@ -128,6 +147,7 @@ const Calculater = () => {
             <div className="content">
                 <div className="calculaterHeader">
                     <h6>Abstract</h6>
+                    <button className="rest_all ms-auto" onClick={refreshPage}>Reset</button>
 
                 </div>
                 <Row>
@@ -145,6 +165,19 @@ const Calculater = () => {
                                 </Form.Select>
                             </Form.Group>
                         </div>
+                        <div className="graph_grid white_bg">
+                            <h5>
+                                Age Range 
+                            </h5>
+                            <Form.Group className="mb-3 mt-3">
+                            <Form.Select onChange={e => { handleAgeRange(e.target.value)}}>
+                            <option disabled = {true} selected = {true}>----- select ------</option>
+                            {ageRanges?.map((data, index) => (
+                                    <option value={data.ageRangeCode} key={index}> {data.description}</option>
+                                 ))}
+                            </Form.Select>
+                            </Form.Group>
+                        </div>
                     </Col>
                     <Col lg={6}>
                         <div className="graph_grid white_bg">
@@ -158,6 +191,18 @@ const Calculater = () => {
                                  ))}
 
                                 </Form.Select>
+                            </Form.Group>
+                        </div>
+                        <div className="graph_grid white_bg">
+                            <h5>
+                              Gender
+                            </h5>
+                            <Form.Group className="mb-3 mt-3">
+                            <Form.Select onChange={e => { handleGender(e.target.value)}}>
+                            <option disabled = {true} selected = {true}>----- select ------</option>
+                            <option value= "M">Men</option>
+                            <option value= "F">Women</option>
+                            </Form.Select>
                             </Form.Group>
                         </div>
                     </Col>
@@ -215,9 +260,14 @@ const Calculater = () => {
                                 </Button>
                         </Form>
                             </div>
+                            <div className="pie_charts">
+                                <div className="total_population">
+                                    <span></span><p>target Population: {targetPopulation}%</p>
+                                </div>
                             {pageload && 
                             <HighchartsReact highcharts={Highcharts} options={options} />
                             }
+                            </div>
                             
                         </div>
 
