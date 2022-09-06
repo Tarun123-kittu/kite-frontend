@@ -163,6 +163,79 @@ svg.CircularProgressbar {
     display: flex;
     margin-left: auto;
 }
+.total_population {
+    background: #fff;
+    box-shadow: 0px 0px 5px rgba(0,0,0,20%);
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.pie_charts {
+    position: relative;
+}
+
+.total_population span {
+    width: 10px;
+    height: 10px;
+    background: #4caf50;
+    display: inline-block;
+}
+
+.total_population p {
+    margin: 0;
+    margin-left: 6px;
+}
+.total_population {}
+
+.total_population {
+    background: #fff;
+    box-shadow: 0px 0px 5px rgba(0,0,0,20%);
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+}
+
+.pie_charts {
+    position: relative;
+}
+
+.total_population span {
+    width: 10px;
+    height: 10px;
+    background: #4caf50;
+    display: inline-block;
+}
+
+.total_population p {
+    margin: 0;
+    margin-left: 6px;
+    font-weight: 600;
+}
+
+button.rest_all {
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    margin-right: 6px;
+    border-radius: 3px;
+    transition: ease all .3s;
+    -webkit-transition: ease all .3s;
+}
+
+button.rest_all:hover {
+    background: #fff;
+    color: #000;
+    transition: ease all .3s;
+    -webkit-transition: ease all .3s;
+}
 /* media query starts here */
 @media(max-width:1440px){
     .social_grid, .graph_grid {
